@@ -4,9 +4,9 @@ from checkov.common.util.type_forcers import force_list
 import ast
 
 
-class IAMStarActionPolicyDocument(BaseResourceCheck):
+class IAMStarResourcePolicyDocument(BaseResourceCheck):
     def __init__(self):
-        name = "Ensure no IAM policies documents allow \"*\" as a statement's actions"
+        name = "Ensure no IAM policies documents allow \"*\" as a statement's Resource"
         id = "CKV_AWS_Resource_NOTWILDCARD"
         supported_resources = ['AWS::IAM::Policy', 'AWS::IAM::Group', 'AWS::IAM::Role', 'AWS::IAM::User']
         categories = [CheckCategories.IAM]
@@ -37,7 +37,7 @@ class IAMStarActionPolicyDocument(BaseResourceCheck):
         return CheckResult.UNKNOWN
 
 
-check = IAMStarActionPolicyDocument()
+check = IAMStarResourcePolicyDocument()
 
 
 def check_policy(policy_block):
